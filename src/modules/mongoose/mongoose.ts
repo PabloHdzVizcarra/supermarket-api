@@ -1,4 +1,4 @@
-import mongoose, { Connection } from "mongoose";
+import mongoose, { Connection } from "mongoose"
 
 const dbName: string = 'supermarket'
 const uri: string = 'mongodb://localhost:27017'

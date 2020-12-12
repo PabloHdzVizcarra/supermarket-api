@@ -24,6 +24,7 @@ const userSchema: TypeSchema = new Schema({
   password: {
     type: String,
     minlength: 8,
+    required: true,
   },
   yearOfBirth: {
     type: String,

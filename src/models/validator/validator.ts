@@ -31,7 +31,7 @@ export function validate(
     return next()
   }
   const extractedErrors: { [x: number]: string }[] = []
-  errors.array().map(err => extractedErrors.push({ [err.param]: err.msg }))
+  errors.array().map(err => extractedErrors.push(err.msg))
   return res.status(422).json({
     errors: extractedErrors,
   })

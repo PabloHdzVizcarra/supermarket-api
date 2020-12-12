@@ -4,7 +4,7 @@ import { ResCreateCollection, UserModel } from "../../types/types";
 const dbName: string = 'supermarket'
 const uri: string = 'mongodb://localhost:27017'
 
-const options = {useUnifiedTopology: true, useNewUrlParser: true}
+const options = {useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true}
 mongoose.connect(`${uri}/${dbName}`, options).then(() => (): void => {})
 
 const db: Connection = mongoose.connection
@@ -25,7 +25,7 @@ export async function createDataInCollection(data: UserModel, Schema: Model<Docu
     }
   } catch (e) {
     return {
-      error: false,
+      error: true,
       message: e.message,
     }
   }

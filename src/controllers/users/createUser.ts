@@ -1,12 +1,14 @@
 import { Request, Response } from "express"
 import UserSchema from '../../models/userModel'
 import { createDataInCollection } from "../../modules/mongoose/mongoose";
+import { createResponse } from "./helpers/createResponse";
+import { LogRoute } from "../../modules/debug-logs/debug";
 
 export async function createUser(req: Request, res: Response): Promise<void> {
-  console.log(req.body)
-  const result = await createDataInCollection(req.body, UserSchema)
-  console.log(result)
-  res.json({
-    action: 'create a new user'
+  LogRoute('POST: /api/user')
+  const { statusCode, message, data } = await createResponse(await createDataInCollection(req.body, UserSchema))
+  res.status(statusCode).json({
+    message,
+    data
   })
 }

@@ -33,7 +33,8 @@ const userSchema: TypeSchema = new Schema({
   email: {
     type: String,
     email: true,
-    unique: true
+    unique: true,
+    required: true
   },
   create_at: {
     type: Date,

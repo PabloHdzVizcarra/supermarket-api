@@ -1,4 +1,4 @@
-import mongoose, { Document, Model, Schema as TypeSchema } from "mongoose";
+import mongoose, { Document, Model, Schema as TypeSchema } from 'mongoose'
 const Schema = mongoose.Schema
 
 const userSchema: TypeSchema = new Schema({
@@ -6,13 +6,13 @@ const userSchema: TypeSchema = new Schema({
     type: String,
     required: true,
     minlength: 3,
-    maxlength: 15
+    maxlength: 15,
   },
   lastname: {
     type: String,
     required: true,
     minlength: 5,
-    maxlength: 15
+    maxlength: 15,
   },
   username: {
     type: String,
@@ -34,14 +34,14 @@ const userSchema: TypeSchema = new Schema({
     type: String,
     email: true,
     unique: true,
-    required: true
+    required: true,
   },
   create_at: {
     type: Date,
     required: true,
-    default: Date.now
-  }
+    default: Date.now,
+  },
 })
 
-const UserSchema: Model<Document> =  mongoose.model('User', userSchema)
+const UserSchema: Model<Document> = mongoose.model('User', userSchema)
 export default UserSchema

@@ -23,10 +23,8 @@ export async function createDataInCollection(
   Schema: Model<Document>,
 ): Promise<ResCreateCollection> {
   try {
-    console.log(data)
     const result: Document = new Schema(data)
     await result.save()
-    console.log(result)
     LogDatabase('saved in mongoose')
     return {
       error: false,

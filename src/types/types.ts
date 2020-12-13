@@ -1,10 +1,10 @@
-import { Document } from "mongoose";
+import { Document } from 'mongoose'
 
 export type UserModel = {
   name: string
   lastname: string
   username: string
-  yearOfBirth: string
+  dateOfBirth: string
   email: string
   password: string
 }

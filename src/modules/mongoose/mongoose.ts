@@ -8,11 +8,9 @@ const uri = 'mongodb://localhost:27017'
 const options = {
   useUnifiedTopology: true,
   useNewUrlParser: true,
-  useCreateIndex: true,
+  createIndex: true,
 }
-mongoose.connect(`${uri}/${dbName}`, options).then(() => {
-  console.log('try connection')
-})
+mongoose.connect(`${uri}/${dbName}`, options).then()
 
 const db: Connection = mongoose.connection
 db.on('error', console.error.bind(console, 'connection error'))
@@ -25,8 +23,10 @@ export async function createDataInCollection(
   Schema: Model<Document>,
 ): Promise<ResCreateCollection> {
   try {
+    console.log(data)
     const result: Document = new Schema(data)
     await result.save()
+    console.log(result)
     LogDatabase('saved in mongoose')
     return {
       error: false,

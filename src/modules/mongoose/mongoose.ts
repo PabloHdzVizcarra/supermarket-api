@@ -8,10 +8,9 @@ const uri = 'mongodb://localhost:27017'
 const options = {
   useUnifiedTopology: true,
   useNewUrlParser: true,
-  createIndex: true,
 }
 mongoose.connect(`${uri}/${dbName}`, options).then()
-
+mongoose.set('useCreateIndex', true)
 const db: Connection = mongoose.connection
 db.on('error', console.error.bind(console, 'connection error'))
 db.once('open', () => {

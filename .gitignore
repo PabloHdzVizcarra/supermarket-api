@@ -3,3 +3,4 @@ dist
 endPoints.http
 .idea
 reshttp
+.*env

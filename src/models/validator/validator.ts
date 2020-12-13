@@ -5,19 +5,29 @@ import {
   validationResult,
 } from 'express-validator'
 import { NextFunction, Request, Response } from 'express'
+import { LogError } from '../../modules/debug-logs/debug'
 
 export function userValidationRules(): Array<ValidationChain> {
   return [
-    body('name', 'debes agegar un nombre valido').isString().not().isEmpty(),
+    body('name', 'debes agregar un nombre valido').isString().not().isEmpty(),
     body('lastname', 'debes agregar un apellido')
       .isString()
       .not()
       .isEmpty()
       .isLength({ min: 4 }),
-    body('username').isString().notEmpty().isLength({ min: 3 }),
-    body('password').isString().notEmpty().isLength({ min: 8 }),
-    body('yearOfBirth').isString().notEmpty(),
-    body('email').isString().notEmpty().isEmail(),
+    body('username', 'debes agregar un nombre de usuario valido')
+      .isString()
+      .notEmpty()
+      .isLength({ min: 3 }),
+    body('password', 'debes agregar un contraseña valida')
+      .isString()
+      .notEmpty()
+      .isLength({ min: 8 }),
+    body('dateOfBirth', 'debes agregar una fecha valida').isString().notEmpty(),
+    body('email', 'debes agregar un email valido')
+      .isString()
+      .notEmpty()
+      .isEmail(),
   ]
 }
 
@@ -32,6 +42,7 @@ export function validate(
   }
   const extractedErrors: { [x: number]: string }[] = []
   errors.array().map(err => extractedErrors.push(err.msg))
+  LogError('wrong data sent')
   return res.status(422).json({
     errors: extractedErrors,
   })

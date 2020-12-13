@@ -1,5 +1,6 @@
 import mongoose, { Connection, Document, Model } from 'mongoose'
 import { ResCreateCollection, UserModel } from '../../types/types'
+import { LogDatabase, LogError } from '../debug-logs/debug'
 
 const dbName = 'supermarket'
 const uri = 'mongodb://localhost:27017'
@@ -10,7 +11,7 @@ const options = {
   useCreateIndex: true,
 }
 mongoose.connect(`${uri}/${dbName}`, options).then(() => {
-  console.log('tyr connection')
+  console.log('try connection')
 })
 
 const db: Connection = mongoose.connection
@@ -26,13 +27,14 @@ export async function createDataInCollection(
   try {
     const result: Document = new Schema(data)
     await result.save()
-
+    LogDatabase('saved in mongoose')
     return {
       error: false,
       message: 'document created in collection successfully',
       data: result,
     }
   } catch (e) {
+    LogError('error mongoose')
     return {
       error: true,
       message: e.message,

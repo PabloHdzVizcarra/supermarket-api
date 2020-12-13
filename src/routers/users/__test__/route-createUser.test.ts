@@ -23,7 +23,7 @@ describe('Test in route POST: "api/user"', () => {
       lastname: 'rodriguez',
       username: 'ignacio01',
       password: '123456789',
-      yearOfBirth: '1992/01/13',
+      dateOfBirth: '1992/01/13',
       email: 'data-test@gmail.com',
     })
     expect(createMock).toHaveBeenCalled()

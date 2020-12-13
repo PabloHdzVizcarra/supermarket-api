@@ -26,7 +26,7 @@ const userSchema: TypeSchema = new Schema({
     minlength: 8,
     required: true,
   },
-  yearOfBirth: {
+  dateOfBirth: {
     type: String,
     required: true,
   },

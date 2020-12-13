@@ -31,6 +31,13 @@ export function userValidationRules(): Array<ValidationChain> {
   ]
 }
 
+export function loginValidationRules(): Array<ValidationChain> {
+  return [
+    body('email', 'should send email in request').notEmpty().isString(),
+    body('password', 'should send password in request').notEmpty().isString(),
+  ]
+}
+
 export function validate(
   req: Request,
   res: Response,

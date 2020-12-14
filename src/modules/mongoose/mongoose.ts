@@ -38,3 +38,48 @@ export async function createDataInCollection(
     }
   }
 }
+
+type DataLog = {
+  email: string
+  password: string
+}
+
+interface DataUSer extends mongoose.Document {
+  password: string
+  email: string
+}
+
+type GetOneData = {
+  error?: boolean
+  message: string
+  data?: DataUSer | Document
+  errorDB?: boolean
+}
+
+export async function getOneDataFromDB(
+  data: DataLog,
+  schema: Model<Document>,
+): Promise<GetOneData> {
+  try {
+    const dataFromDatabase: Document | null = await schema.findOne({
+      email: data.email,
+    })
+    if (!dataFromDatabase) {
+      return {
+        error: true,
+        message: 'No data found',
+      }
+    }
+
+    return {
+      error: false,
+      message: 'Data found',
+      data: dataFromDatabase,
+    }
+  } catch (e) {
+    return {
+      errorDB: true,
+      message: e.message,
+    }
+  }
+}

@@ -9,32 +9,31 @@ import { LogError } from '../../modules/debug-logs/debug'
 
 export function userValidationRules(): Array<ValidationChain> {
   return [
-    body('name', 'debes agregar un nombre valido').isString().not().isEmpty(),
-    body('lastname', 'debes agregar un apellido')
+    body('name', 'you must add a valid name').isString().not().isEmpty(),
+    body('lastname', 'you must add a valid lastname')
       .isString()
       .not()
       .isEmpty()
       .isLength({ min: 4 }),
-    body('username', 'debes agregar un nombre de usuario valido')
+    body('username', 'you must add a valid username')
       .isString()
       .notEmpty()
       .isLength({ min: 3 }),
-    body('password', 'debes agregar un contraseña valida')
+    body('password', 'you must add a valid password')
       .isString()
       .notEmpty()
       .isLength({ min: 8 }),
-    body('dateOfBirth', 'debes agregar una fecha valida').isString().notEmpty(),
-    body('email', 'debes agregar un email valido')
+    body('dateOfBirth', 'you must add a valid dateOfBirth')
       .isString()
-      .notEmpty()
-      .isEmail(),
+      .notEmpty(),
+    body('email', 'you must add a valid email').isString().notEmpty().isEmail(),
   ]
 }
 
 export function loginValidationRules(): Array<ValidationChain> {
   return [
     body('email', 'should send email in request').notEmpty().isString(),
-    body('password', 'should send password in request').notEmpty().isString(),
+    body('password', 'should send a password in request').notEmpty().isString(),
   ]
 }
 

@@ -12,5 +12,6 @@ export type UserModel = {
 export type ResCreateCollection = {
   data?: Document
   message: string
-  error: boolean
+  error?: boolean
+  errorDb?: boolean
 }

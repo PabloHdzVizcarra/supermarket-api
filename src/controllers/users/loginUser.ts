@@ -1,8 +1,10 @@
 import { Request, Response } from 'express'
-import { generateAccessToken } from './auth/generateAccesToken'
+import { generateAccessToken } from './helpers/generateAccesToken'
 import UserSchema from '../../models/userModel'
 import { getOneDataFromDB } from '../../modules/mongoose/mongoose'
 import { createResponse } from './helpers/createResponse/createResponseForGetDataFromDatabase'
+
+// TODO: token always create, need refactor
 
 export async function loginUser(req: Request, res: Response): Promise<void> {
   const { email, password } = req.body

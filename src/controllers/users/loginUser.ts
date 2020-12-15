@@ -4,8 +4,6 @@ import UserSchema from '../../models/userModel'
 import { getOneDataFromDB } from '../../modules/mongoose/mongoose'
 import { createResponse } from './helpers/createResponse/createResponseForGetDataFromDatabase'
 
-// TODO: token always create, need refactor
-
 export async function loginUser(req: Request, res: Response): Promise<void> {
   const { email, password } = req.body
   const { statusCode, message, data } = await createResponse(

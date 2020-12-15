@@ -18,7 +18,7 @@ describe('Test route "api/user/autologin"', () => {
     request(app)
       .get('/api/user/autologin')
       .set('Accept', 'application/json')
-      .set('Cookie', ['tokenWrong'])
+      .set('Cookie', ['token=tokenWrong'])
       .expect('Content-Type', /json/)
       .expect(403)
       .end((error, result) => {

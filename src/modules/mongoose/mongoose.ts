@@ -41,7 +41,7 @@ export async function createDataInCollection(
 
 type DataLog = {
   email: string
-  password: string
+  password?: string
 }
 
 interface DataUSer extends mongoose.Document {
@@ -65,18 +65,20 @@ export async function getOneDataFromDB(
       email: data.email,
     })
     if (!dataFromDatabase) {
+      LogDatabase('data not found in database')
       return {
         error: true,
         message: 'No data found',
       }
     }
-
+    LogDatabase('data found in database')
     return {
       error: false,
       message: 'Data found',
       data: dataFromDatabase,
     }
   } catch (e) {
+    LogDatabase('database error')
     return {
       errorDB: true,
       message: e.message,

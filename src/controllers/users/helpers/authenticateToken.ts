@@ -10,8 +10,9 @@ export function authenticateToken(
   if (token === undefined) {
     return res.status(401).json({ message: 'not set credentials' })
   }
+  const sliceToken: string = token.slice(6)
 
-  jwt.verify(token, process.env.TOKEN_SECRET as string, (err, user) => {
+  jwt.verify(sliceToken, process.env.TOKEN_SECRET as string, (err, user) => {
     if (err) {
       return res.status(403).json({ message: 'not valid user' })
     }

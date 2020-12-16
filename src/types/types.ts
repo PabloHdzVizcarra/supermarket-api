@@ -1,4 +1,4 @@
-import { Document } from 'mongoose'
+import mongoose, { Document } from 'mongoose'
 
 export type UserModel = {
   name: string
@@ -14,4 +14,13 @@ export type ResCreateCollection = {
   message: string
   error?: boolean
   errorDb?: boolean
+}
+
+export interface SavedUserDocument extends mongoose.Document {
+  name: string
+  lastname: string
+  username: string
+  password: string
+  email: string
+  dateOfBirth: string
 }

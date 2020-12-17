@@ -1,35 +1,35 @@
 import { Document, Model } from 'mongoose'
 
-type ArticleToSaved = {
+export type ArticleToSave = {
   name: string
   price: number
   description: string
   category: string
+  creator_user: string
 }
 
-type ResultDataSaved = {
+type ResultSavedArticle = {
   error: boolean
   message: string
   data?: Document
 }
 
 export async function createOneDataInSchema(
-  data: ArticleToSaved,
-  schema: Model<Document>,
-): Promise<ResultDataSaved> {
+  data: ArticleToSave,
+  Schema: Model<Document>,
+): Promise<ResultSavedArticle> {
   try {
-    const result = new schema(data)
+    const result: Document = new Schema(data)
     await result.save()
-
     return {
       error: false,
       message: 'data is saved correctly',
       data: result,
     }
-  } catch (e) {
+  } catch (error) {
     return {
       error: true,
-      message: e.error,
+      message: error.message,
     }
   }
 }

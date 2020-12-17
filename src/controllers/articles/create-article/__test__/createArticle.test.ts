@@ -4,6 +4,9 @@ import { ArticleToSave } from '../../../../modules/mongoose/actions-mongoose/cre
 import * as action from '../../../../modules/mongoose/actions-mongoose/createOneDataInSchema'
 
 describe('Test in a controller createArticle', () => {
+  beforeEach(() => {
+    jest.clearAllMocks()
+  })
   const article: ArticleToSave = {
     name: 'milk',
     price: 70,
@@ -33,5 +36,20 @@ describe('Test in a controller createArticle', () => {
       message: 'an error occurred in the database',
     })
     expect(res.status).toHaveBeenCalledWith(400)
+  })
+  it('should respond with a status code 201 and a json with the message and data properties, if all the correct data is sent in the request, and it is saved correctly in the database', async () => {
+    jest.spyOn(action, 'createOneDataInSchema').mockResolvedValue({
+      error: false,
+      message: 'data saved correctly in database',
+      data: article as never,
+    })
+    const req = mockRequest({ ...article })
+    const res = mockResponse()
+    await createArticle(req, res)
+    expect(res.json).toHaveBeenCalledWith({
+      message: 'data saved correctly in database',
+      data: article,
+    })
+    expect(res.status).toHaveBeenCalledWith(201)
   })
 })

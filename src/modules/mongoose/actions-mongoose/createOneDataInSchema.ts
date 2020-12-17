@@ -1,4 +1,5 @@
 import { Document, Model } from 'mongoose'
+import { LogDatabase } from '../../debug-logs/debug'
 
 export type ArticleToSave = {
   name: string
@@ -8,7 +9,7 @@ export type ArticleToSave = {
   creator_user: string
 }
 
-type ResultSavedArticle = {
+export type ResultSavedArticle = {
   error: boolean
   message: string
   data?: Document
@@ -21,12 +22,14 @@ export async function createOneDataInSchema(
   try {
     const result: Document = new Schema(data)
     await result.save()
+    LogDatabase(`article ${data.name} saved correctly in database`)
     return {
       error: false,
       message: 'data is saved correctly',
       data: result,
     }
   } catch (error) {
+    LogDatabase('Error: not saved data')
     return {
       error: true,
       message: error.message,

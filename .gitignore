@@ -4,3 +4,4 @@ endPoints.http
 .idea
 reshttp
 .*env
+coverage

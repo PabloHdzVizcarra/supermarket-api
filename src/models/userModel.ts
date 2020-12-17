@@ -1,4 +1,5 @@
 import mongoose, { Document, Model, Schema as TypeSchema } from 'mongoose'
+import { articleSchema } from './articlesModel/articlesModel'
 const Schema = mongoose.Schema
 
 const userSchema: TypeSchema = new Schema(
@@ -42,6 +43,7 @@ const userSchema: TypeSchema = new Schema(
       required: true,
       default: Date.now,
     },
+    articles: [articleSchema],
   },
   { strict: true },
 )

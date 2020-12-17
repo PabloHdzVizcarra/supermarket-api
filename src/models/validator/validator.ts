@@ -43,6 +43,12 @@ export function articleValidationRules(): ValidationChain[] {
     body('price', 'debes mandar un precio válido').notEmpty().isInt({ min: 1 }),
     body('category', 'debes agregar una category').notEmpty().isString(),
     body('description', 'debes agregar una descripción').notEmpty().isString(),
+    body(
+      'creator_user',
+      'debes mandar el id del usuario al que deseas agregar el producto',
+    )
+      .isString()
+      .notEmpty(),
   ]
 }
 

@@ -1,7 +1,7 @@
 import { ResCreateCollection } from '../../../types/types'
 import { Document } from 'mongoose'
 
-type Result = {
+export type ResultSavedData = {
   statusCode: number
   message: string
   data?: Document
@@ -9,7 +9,7 @@ type Result = {
 
 export async function createResponse(
   result: ResCreateCollection,
-): Promise<Result> {
+): Promise<ResultSavedData> {
   if (result.error) {
     return {
       statusCode: 400,

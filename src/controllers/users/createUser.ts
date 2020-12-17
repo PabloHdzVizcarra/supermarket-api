@@ -11,13 +11,13 @@ export async function createUser(req: Request, res: Response): Promise<void> {
   LogRoute('POST: /api/user')
   const checked = checkPropertiesInObject(
     ['name', 'username', 'password', 'lastname', 'email', 'dateOfBirth'],
-    req.body.data,
+    req.body,
   )
   if (!checked) {
     res.status(204).json({ message: 'empty fields were sent' })
     return
   }
-  const dataHash: UserModel = hashPassword(req.body.data)
+  const dataHash: UserModel = hashPassword(req.body)
   const { statusCode, message, data } = await createResponse(
     await createDataInCollection(dataHash, UserSchema),
   )

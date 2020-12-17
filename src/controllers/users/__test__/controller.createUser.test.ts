@@ -15,7 +15,7 @@ describe('test in controller POST: "/api/user"', () => {
     email: 'example@data.com',
     dateOfBirth: '1992/12/01',
   }
-  const mockRequest = (body: { data: Record<string, string> }) =>
+  const mockRequest = (body: Record<string, string>) =>
     ({
       body,
     } as Request)
@@ -33,7 +33,7 @@ describe('test in controller POST: "/api/user"', () => {
       email: 'example@data.com',
     }
     const res = mockResponse()
-    const req = mockRequest({ data: wrongDataUser })
+    const req = mockRequest({ ...wrongDataUser })
     await createUser(req, res)
     expect(res.status).toHaveBeenCalledWith(204)
     expect(res.json).toHaveBeenCalledWith({ message: expect.any(String) })
@@ -44,7 +44,7 @@ describe('test in controller POST: "/api/user"', () => {
       .spyOn(mongoose, 'createDataInCollection')
       .mockResolvedValue({ error: true, message: 'some database error' })
     const res = mockResponse()
-    const req = mockRequest({ data: dataUser })
+    const req = mockRequest({ ...dataUser })
     await createUser(req, res)
     expect(res.status).toHaveBeenCalledWith(400)
     expect(res.json).toHaveBeenCalledWith({ message: 'some database error' })
@@ -57,7 +57,7 @@ describe('test in controller POST: "/api/user"', () => {
       data: dataUser as never,
     })
     const res = mockResponse()
-    const req = mockRequest({ data: dataUser })
+    const req = mockRequest({ ...dataUser })
     await createUser(req, res)
     expect(res.status).toHaveBeenCalledWith(201)
     expect(res.json).toHaveBeenCalledWith({

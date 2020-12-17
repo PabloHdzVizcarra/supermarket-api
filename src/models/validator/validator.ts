@@ -37,6 +37,15 @@ export function loginValidationRules(): Array<ValidationChain> {
   ]
 }
 
+export function articleValidationRules(): ValidationChain[] {
+  return [
+    body('name', 'debes mandar un nombre correcto').notEmpty().isString(),
+    body('price', 'debes mandar un precio válido').notEmpty().isInt({ min: 1 }),
+    body('category', 'debes agregar una category').notEmpty().isString(),
+    body('description', 'debes agregar una descripción').notEmpty().isString(),
+  ]
+}
+
 export function validate(
   req: Request,
   res: Response,

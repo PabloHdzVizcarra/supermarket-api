@@ -9,7 +9,7 @@ import {
 import { loginUser } from '../../controllers/users/loginUser'
 import { authenticateToken } from '../../controllers/users/helpers/authenticateToken'
 import { authUser } from '../../controllers/users/authUser'
-import { getUser } from '../../controllers/users/getUser'
+import { getUser } from '../../controllers/users/get_user/getUser'
 const router: Router = express.Router()
 
 router.post('/', userValidationRules(), validate, createUser)

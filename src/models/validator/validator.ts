@@ -45,7 +45,7 @@ export function articleValidationRules(): ValidationChain[] {
     body('description', 'debes agregar una descripción').notEmpty().isString(),
     body(
       'creator_user',
-      'debes mandar el id del usuario al que deseas agregar el producto',
+      'debes mandar él id del usuario al que deseas agregar el producto',
     )
       .isString()
       .notEmpty(),

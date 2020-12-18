@@ -17,7 +17,7 @@ export async function createDataToRespond(
     }
   }
   return {
-    statusCode: 201,
+    statusCode: 200,
     message,
     data,
   }

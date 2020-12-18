@@ -1,8 +1,12 @@
 import { NextFunction, Request, Response } from 'express'
 
-export const mockRequest = (body: Record<never, never>): Request =>
+export const mockRequest = (
+  body: Record<never, never>,
+  params: Record<never, never>,
+): Request =>
   ({
     body,
+    params,
   } as Request)
 export const mockResponse = (): Response => {
   const res = {} as Response

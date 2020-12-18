@@ -1,5 +1,6 @@
 import {
   body,
+  param,
   Result,
   ValidationChain,
   validationResult,
@@ -50,6 +51,10 @@ export function articleValidationRules(): ValidationChain[] {
       .isString()
       .notEmpty(),
   ]
+}
+
+export function userIDValidationRules(): ValidationChain[] {
+  return [param('idUser', 'should send idUser data').notEmpty().isString()]
 }
 
 export function validate(

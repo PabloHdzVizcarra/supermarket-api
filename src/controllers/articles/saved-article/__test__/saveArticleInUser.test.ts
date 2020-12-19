@@ -18,7 +18,7 @@ describe('Test in saveArticleInUser controller', () => {
       error: true,
     } as ResultSavedWithError)
     const res = mockResponse()
-    const req = mockRequest({})
+    const req = mockRequest({}, {})
     const next = mockNextFunction()
     await saveArticleInUser(req, res, next)
     expect(res.status).toHaveBeenCalledWith(400)
@@ -30,7 +30,7 @@ describe('Test in saveArticleInUser controller', () => {
       error: true,
     } as ResultSavedWithError)
     const res = mockResponse()
-    const req = mockRequest({})
+    const req = mockRequest({}, {})
     const next = mockNextFunction()
     await saveArticleInUser(req, res, next)
     expect(res.status).toHaveBeenCalledWith(404)
@@ -50,10 +50,9 @@ describe('Test in saveArticleInUser controller', () => {
       } as never,
     } as ResultSavedWithError)
     const res = mockResponse()
-    const req = mockRequest({})
+    const req = mockRequest({}, {})
     const next = mockNextFunction()
     await saveArticleInUser(req, res, next)
-    console.log(req.body)
     expect(req.body).toHaveProperty('document')
     expect(next).toHaveBeenCalled()
   })

@@ -15,7 +15,7 @@ export async function saveArticleInUser(
     await embedDocument(req.body, creator_user, UserSchema as never),
   )
 
-  if (statusCode !== 201) {
+  if (statusCode !== 200) {
     res.status(statusCode).json({ message })
     return
   }

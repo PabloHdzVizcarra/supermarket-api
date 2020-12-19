@@ -1,13 +1,13 @@
 import { Model } from 'mongoose'
 import { LogDatabase } from '../../debug-logs/debug'
 import {
-  DocArticle,
+  DocumentWithArticle,
   DocArticleWithData,
   ResultSavedWithError,
 } from '../../../types/types'
 
 export async function embedDocument(
-  data: DocArticle,
+  data: DocumentWithArticle,
   idDoc: string,
   Schema: Model<DocArticleWithData>,
 ): Promise<ResultSavedWithError> {

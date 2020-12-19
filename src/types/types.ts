@@ -42,7 +42,7 @@ export type DataToResponse = {
   data?: DocArticleWithData
 }
 
-export interface DocArticle extends mongoose.Document {
+export interface DocumentWithArticle extends mongoose.Document {
   name: string
   price: number
   category: string

@@ -1,4 +1,4 @@
-import { ResultActionInDoc } from '../actions-mongoose/deleteDocument'
+import { ResultActionInDoc } from '../actions-mongoose/delete_document/delete-document'
 import { Document } from 'mongoose'
 
 type DataToResponse = {

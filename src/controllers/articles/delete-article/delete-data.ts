@@ -1,7 +1,7 @@
 import { Request, Response } from 'express'
 import { deleteOneDocument } from '../../../modules/mongoose/actions-mongoose/delete_document/delete-document'
 import ArticleSchema from '../../../models/articlesModel/articlesModel'
-import { createResponse } from '../../../modules/mongoose/helpers/createResponse'
+import { createResponse } from '../../../modules/mongoose/helpers/create-response'
 import { LogRoute } from '../../../modules/debug-logs/debug'
 
 export async function deleteData(req: Request, res: Response): Promise<void> {

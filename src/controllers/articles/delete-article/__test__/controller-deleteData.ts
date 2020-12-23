@@ -39,7 +39,7 @@ describe('Test a deleteData controller, when the document is deleted with succes
     jest.spyOn(mongoose, 'deleteOneDocument').mockResolvedValue({
       message,
       error: 'null',
-      doc: mockDocument as never,
+      document: mockDocument as never,
     })
     await deleteData(req, res)
     expect(res.status).toHaveBeenCalledWith(200)
@@ -48,7 +48,7 @@ describe('Test a deleteData controller, when the document is deleted with succes
     jest.spyOn(mongoose, 'deleteOneDocument').mockResolvedValue({
       message,
       error: 'null',
-      doc: mockDocument as never,
+      document: mockDocument as never,
     })
     await deleteData(req, res)
     expect(res.json).toHaveBeenCalledWith({

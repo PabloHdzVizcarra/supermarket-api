@@ -1,4 +1,4 @@
-import { createResponse } from '../createResponse'
+import { createResponse } from '../create-response'
 
 describe('Test in a helper createResponse', () => {
   it('should respond to an object with the code property with a value 400 and a message property with a string, when the error parameter has a "database" value', async () => {
@@ -30,7 +30,7 @@ describe('Test in a helper createResponse', () => {
     const result = await createResponse({
       message: 'document successfully obtained',
       error: 'null',
-      doc: {
+      document: {
         name: 'milk',
       } as never,
     })

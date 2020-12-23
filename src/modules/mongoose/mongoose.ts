@@ -1,6 +1,7 @@
 import mongoose, { Connection, Document, Model } from 'mongoose'
 import { ResCreateCollection, UserModel } from '../../types/types'
 import { LogDatabase, LogError } from '../debug-logs/debug'
+import { DocumentWithUser } from '../../models/userModel'
 
 const dbName = 'supermarket'
 const uri = 'mongodb://localhost:27017'
@@ -19,7 +20,7 @@ db.once('open', () => {
 
 export async function createDataInCollection(
   data: UserModel,
-  Schema: Model<Document>,
+  Schema: Model<DocumentWithUser>,
 ): Promise<ResCreateCollection> {
   try {
     const result: Document = new Schema(data)
@@ -58,7 +59,7 @@ type GetOneData = {
 
 export async function getOneDataFromDB(
   data: DataLog,
-  schema: Model<Document>,
+  schema: Model<DocumentWithUser>,
 ): Promise<GetOneData> {
   try {
     const dataFromDatabase: Document | null = await schema.findOne({

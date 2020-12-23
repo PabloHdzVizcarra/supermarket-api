@@ -1,15 +1,16 @@
-import { Model, Document } from 'mongoose'
+import { Model } from 'mongoose'
+import { DocumentWithUser } from '../../../../models/userModel'
 
 export type ErrorString = 'database' | 'not-found' | 'null'
 export type ResultActionInDoc = {
   message: string
   error: ErrorString
-  doc?: Document
+  document?: DocumentWithUser
 }
 
 export async function deleteOneDocument(
   id: string,
-  Schema: Model<Document>,
+  Schema: Model<DocumentWithUser>,
 ): Promise<ResultActionInDoc> {
   try {
     const doc = await Schema.findByIdAndRemove(id)
@@ -22,7 +23,7 @@ export async function deleteOneDocument(
     return {
       message: `the document with the id ${id} was successfully removed from the database`,
       error: 'null',
-      doc,
+      document: doc,
     }
   } catch (e) {
     return {

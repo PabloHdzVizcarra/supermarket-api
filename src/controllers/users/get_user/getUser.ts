@@ -1,15 +1,15 @@
 import { Request, Response } from 'express'
-import { getDocById } from '../../../modules/mongoose/actions-mongoose/getDocById'
 import UserSchema from '../../../models/userModel'
-import { createDataToRespond } from '../../../modules/mongoose/actions-mongoose/createRespond'
+import { getDocumentById } from '../../../modules/mongoose/actions-mongoose/get_document_by_id/get-document-by-id'
+import { createResponse } from '../../../modules/mongoose/helpers/create-response'
 
 export async function getUser(req: Request, res: Response): Promise<void> {
   const { idUser } = req.params
-  const { data, statusCode, message } = await createDataToRespond(
-    await getDocById(idUser, UserSchema),
+  const { code, message, document } = await createResponse(
+    await getDocumentById(idUser, UserSchema),
   )
-  res.status(statusCode).json({
+  res.status(code).json({
     message,
-    data,
+    data: document,
   })
 }

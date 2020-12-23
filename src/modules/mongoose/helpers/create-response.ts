@@ -10,7 +10,7 @@ type DataToResponse = {
 export async function createResponse({
   message,
   error,
-  doc,
+  document,
 }: ResultActionInDoc): Promise<DataToResponse> {
   switch (error) {
     case 'database': {
@@ -31,7 +31,7 @@ export async function createResponse({
       return {
         code: 200,
         message,
-        document: doc,
+        document: document,
       }
     }
   }

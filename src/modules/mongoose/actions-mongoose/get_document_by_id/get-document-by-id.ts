@@ -1,17 +1,18 @@
-import { Document, Model } from 'mongoose'
+import { Model } from 'mongoose'
+import { DocumentWithUser } from '../../../../models/userModel'
 
 type ResultGetDocumentById = {
   error: boolean
   message?: string
-  document?: Document
+  document?: DocumentWithUser
 }
 
 export async function getDocumentById(
   idDoc: string,
-  schema: Model<Document>,
+  schema: Model<DocumentWithUser>,
 ): Promise<ResultGetDocumentById> {
   try {
-    const document: Document | null = await schema.findById(idDoc)
+    const document: DocumentWithUser | null = await schema.findById(idDoc)
     if (!document) {
       return {
         error: true,

@@ -14,7 +14,6 @@ export async function deleteOneDocument(
 ): Promise<ResultActionInDoc> {
   try {
     const doc = await Schema.findByIdAndRemove(id)
-    console.log(doc)
     if (!doc) {
       return {
         message: 'document not found',

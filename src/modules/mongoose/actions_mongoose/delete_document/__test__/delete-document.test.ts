@@ -44,7 +44,7 @@ describe('Test in deleteOneDocument function', () => {
     )
     expect(result).toHaveProperty('message')
     expect(result).toHaveProperty('error')
-    expect(result).toHaveProperty('doc')
+    expect(result).toHaveProperty('document')
   })
   test('the error property must have a value of null, when the document is found in the database', async () => {
     const { error } = await deleteOneDocument(

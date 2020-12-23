@@ -17,6 +17,10 @@ const mockNextFunction = () => jest.fn() as NextFunction
 
 describe('when the id_user and id_document properties are sent in the request.body and both are valid in the database', () => {
   it('the middleware must call next function', async () => {
+    jest.spyOn(mongoose, 'findDocumentAndUpdate').mockResolvedValue({
+      message: 'delete correct',
+      error: 'null',
+    })
     const req = mockRequest({
       id_user: '5fdb77852c9d80397daf00c3',
       id_document: '5fdb77852c9d80397daf00c3',
@@ -29,10 +33,6 @@ describe('when the id_user and id_document properties are sent in the request.bo
 })
 
 describe('when occurs error in a database', () => {
-  jest.spyOn(mongoose, 'findDocumentAndUpdate').mockResolvedValue({
-    message: 'database error',
-    error: 'database',
-  })
   const req = mockRequest({
     id_user: '5fdb77852c9d80397daf00c3',
     id_document: '5fdb77852c9d80397daf00c3',
@@ -40,8 +40,12 @@ describe('when occurs error in a database', () => {
   const res = mockResponse()
   const next = mockNextFunction()
   it('should respond with a status code 400', async () => {
+    jest.spyOn(mongoose, 'findDocumentAndUpdate').mockResolvedValue({
+      message: 'error database',
+      error: 'database',
+    })
     await deleteDataUser(req, res, next)
-    expect(res.status).toBeCalledWith(400)
+    expect(res.status).toHaveBeenCalledWith(400)
   })
   it('should respond with a json with property message', async () => {
     await deleteDataUser(req, res, next)
@@ -51,21 +55,25 @@ describe('when occurs error in a database', () => {
 })
 
 describe('when the id_user does not match any document in the database', () => {
-  jest.spyOn(mongoose, 'findDocumentAndUpdate').mockResolvedValue({
-    message: 'document not found',
-    error: 'not-found',
-  })
   const req = mockRequest({
     id_user: '5fdb77852c9d80397daf00c6',
     id_document: '5fdb77852c9d80397daf00c3',
   })
   const res = mockResponse()
   const next = mockNextFunction()
-  it('should respond with a status code 400', async () => {
+  it('should respond with a status code 404', async () => {
+    jest.spyOn(mongoose, 'findDocumentAndUpdate').mockResolvedValue({
+      message: 'document not found',
+      error: 'not-found',
+    })
     await deleteDataUser(req, res, next)
-    expect(res.status).toBeCalledWith(404)
+    expect(res.status).toHaveBeenCalledWith(404)
   })
   it('should respond with a json with property message', async () => {
+    jest.spyOn(mongoose, 'findDocumentAndUpdate').mockResolvedValue({
+      message: 'document not found',
+      error: 'not-found',
+    })
     await deleteDataUser(req, res, next)
     expect(res.json).toHaveBeenCalled()
     expect(res.json).toHaveBeenCalledWith({ message: expect.any(String) })

@@ -11,8 +11,6 @@ export async function deleteDataUser(
 ): Promise<void> {
   LogRoute('DELETE /api/article')
   const { id_user, id_document } = req.body
-  console.log(id_document)
-  console.log(id_user)
   const { code, message } = await createResponse(
     await findDocumentAndUpdate(id_user, id_document, UserSchema),
   )

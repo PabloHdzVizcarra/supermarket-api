@@ -1,5 +1,5 @@
 import { Request, Response } from 'express'
-import { createOneDataInSchema } from '../../../modules/mongoose/actions-mongoose/createOneDataInSchema'
+import { createOneDataInSchema } from '../../../modules/mongoose/actions_mongoose/createOneDataInSchema'
 import ArticleSchema from '../../../models/articlesModel/articlesModel'
 import { createResponse } from '../../users/helpers/createResponse'
 

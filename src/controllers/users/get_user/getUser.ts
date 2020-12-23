@@ -1,6 +1,6 @@
 import { Request, Response } from 'express'
 import UserSchema from '../../../models/userModel'
-import { getDocumentById } from '../../../modules/mongoose/actions-mongoose/get_document_by_id/get-document-by-id'
+import { getDocumentById } from '../../../modules/mongoose/actions_mongoose/get_document_by_id/get-document-by-id'
 import { createResponse } from '../../../modules/mongoose/helpers/create-response'
 
 export async function getUser(req: Request, res: Response): Promise<void> {

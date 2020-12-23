@@ -5,8 +5,10 @@ import {
   validate,
 } from '../../models/validator/validator'
 import { saveArticleInUser } from '../../controllers/articles/saved-article/saveArticleInUser'
-import { deleteData } from '../../controllers/articles/delete-article/deleteData'
+import { deleteData } from '../../controllers/articles/delete-article/delete-data'
+import { deleteDataUser } from '../../controllers/users/delete_data_in_user/delete-data-user'
 const router: Router = express.Router()
+// article/
 
 router.post(
   '/',
@@ -16,5 +18,5 @@ router.post(
   createArticle,
 )
 
-router.delete('/:idDocument', deleteData)
+router.delete('/', deleteDataUser, deleteData)
 export default router

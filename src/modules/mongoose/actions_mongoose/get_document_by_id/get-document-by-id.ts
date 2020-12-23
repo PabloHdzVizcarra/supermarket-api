@@ -1,31 +1,27 @@
 import { Model } from 'mongoose'
 import { DocumentWithUser } from '../../../../models/userModel'
-
-type ResultGetDocumentById = {
-  error: boolean
-  message?: string
-  document?: DocumentWithUser
-}
+import { ResultActionInDoc } from '../delete_document/delete-document'
 
 export async function getDocumentById(
   idDoc: string,
   schema: Model<DocumentWithUser>,
-): Promise<ResultGetDocumentById> {
+): Promise<ResultActionInDoc> {
   try {
     const document: DocumentWithUser | null = await schema.findById(idDoc)
     if (!document) {
       return {
-        error: true,
+        error: 'not-found',
         message: 'document not-found',
       }
     }
     return {
-      error: false,
-      document,
+      error: 'null',
+      document: document,
+      message: 'success get document',
     }
   } catch (e) {
     return {
-      error: true,
+      error: 'database',
       message: e.message,
     }
   }

@@ -1,6 +1,6 @@
 import { deleteData } from '../delete-data'
 import { Request, Response } from 'express'
-import * as mongoose from '../../../../modules/mongoose/actions-mongoose/delete_document/delete-document'
+import * as mongoose from '../../../../modules/mongoose/actions_mongoose/delete_document/delete-document'
 
 const mockRequest = (body: unknown, params: unknown) =>
   ({

@@ -1,6 +1,6 @@
 import { mockRequest, mockResponse } from '../../../../helpers/test/mocks'
 import { getUser } from '../getUser'
-import * as mongoose from '../../../../modules/mongoose/actions-mongoose/getDocById'
+import * as mongoose from '../../../../modules/mongoose/actions_mongoose/getDocById'
 
 describe('Tests in getUser controller', () => {
   beforeEach(() => {

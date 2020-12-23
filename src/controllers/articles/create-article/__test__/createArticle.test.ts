@@ -1,7 +1,7 @@
 import { createArticle } from '../createArticle'
 import { Request, Response } from 'express'
-import { ArticleToSave } from '../../../../modules/mongoose/actions-mongoose/createOneDataInSchema'
-import * as action from '../../../../modules/mongoose/actions-mongoose/createOneDataInSchema'
+import { ArticleToSave } from '../../../../modules/mongoose/actions_mongoose/createOneDataInSchema'
+import * as action from '../../../../modules/mongoose/actions_mongoose/createOneDataInSchema'
 
 describe('Test in a controller createArticle', () => {
   beforeEach(() => {

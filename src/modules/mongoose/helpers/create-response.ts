@@ -1,10 +1,10 @@
-import { ResultActionInDoc } from '../actions-mongoose/delete_document/delete-document'
+import { ResultActionInDoc } from '../actions_mongoose/delete_document/delete-document'
 import { Document } from 'mongoose'
 
 type DataToResponse = {
   code: number
   message: string
-  document?: Document
+  document?: Document | unknown
 }
 
 export async function createResponse({

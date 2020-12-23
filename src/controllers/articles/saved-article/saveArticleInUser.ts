@@ -1,8 +1,8 @@
 import { NextFunction, Request, Response } from 'express'
 import { LogRoute } from '../../../modules/debug-logs/debug'
-import { createDataToRespond } from '../../../modules/mongoose/actions-mongoose/createRespond'
+import { createDataToRespond } from '../../../modules/mongoose/actions_mongoose/createRespond'
 import UserSchema from '../../../models/userModel'
-import { embedDocument } from '../../../modules/mongoose/actions-mongoose/embedDocument'
+import { embedDocument } from '../../../modules/mongoose/actions_mongoose/embedDocument'
 
 export async function saveArticleInUser(
   req: Request,

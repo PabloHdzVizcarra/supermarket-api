@@ -4,7 +4,7 @@ import {
   mockResponse,
 } from '../../../../helpers/test/mocks'
 import { saveArticleInUser } from '../saveArticleInUser'
-import * as action from '../../../../modules/mongoose/actions-mongoose/embedDocument'
+import * as action from '../../../../modules/mongoose/actions_mongoose/embedDocument'
 import { ResultSavedWithError } from '../../../../types/types'
 
 describe('Test in saveArticleInUser controller', () => {

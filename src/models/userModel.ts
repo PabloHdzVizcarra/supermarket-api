@@ -2,6 +2,17 @@ import mongoose, { Document, Model, Schema as TypeSchema } from 'mongoose'
 import { articleSchema } from './articlesModel/articlesModel'
 const Schema = mongoose.Schema
 
+export interface DocumentWithUser extends mongoose.Document {
+  name: string
+  lastname: string
+  username: string
+  password: string
+  dateOfBirth: string
+  email: string
+  create_at: Date
+  articles: Array<Document>
+}
+
 const userSchema: TypeSchema = new Schema(
   {
     name: {
@@ -48,5 +59,5 @@ const userSchema: TypeSchema = new Schema(
   { strict: true },
 )
 
-const UserSchema: Model<Document> = mongoose.model('User', userSchema)
+const UserSchema: Model<DocumentWithUser> = mongoose.model('User', userSchema)
 export default UserSchema

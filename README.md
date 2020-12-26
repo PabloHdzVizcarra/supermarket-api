@@ -7,17 +7,17 @@ Create an API where you can have a user login, each user can create articles in 
 ### Expected API behavior
 
 **Actions users**
-- [ ] Create Users
-- [ ] Login Users
+- [X] Create Users
+- [X] Login Users
 - [ ] Delete Users
-- [ ] Sub-documents stored in array articles can be delete
+- [X] Sub-documents stored in array articles can be delete
 - [ ] Sub-documents stored in array articles can be updated
 - [ ] Sub-documents stored in an array articles lists can be updated
 - [ ] Sub-documents stored in an array articles lists can be deleted
 
 **Actions articles**
-- [ ] Create articles
-- [ ] Delete articles
+- [X] Create articles
+- [X] Delete articles
 - [ ] Update articles
 
 **Actions articles lists**

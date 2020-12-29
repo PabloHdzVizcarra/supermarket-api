@@ -18,7 +18,7 @@ Create an API where you can have a user login, each user can create articles in 
 **Actions articles**
 - [X] Create articles
 - [X] Delete articles
-- [ ] Update articles
+- [X] Update articles
 
 **Actions articles lists**
 - [ ] Create articles list
